@@ -18,7 +18,7 @@ import com.training.utility.DriverNames;
 public class LoginTests {
 
 	private WebDriver driver;
-	private String baseUrl;
+	private String adminURL;
 	private LoginPOM loginPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
@@ -34,10 +34,10 @@ public class LoginTests {
 	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
 		loginPOM = new LoginPOM(driver); 
-		baseUrl = properties.getProperty("baseURL");
+		adminURL = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
-		driver.get(baseUrl);
+		driver.get(adminURL);
 	}
 	
 	@AfterMethod
