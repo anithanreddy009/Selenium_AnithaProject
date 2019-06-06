@@ -8,17 +8,15 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
-import org.apache.poi.hssf.record.ScenarioProtectRecord;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
 import com.training.generics.ScreenShot;
-import com.training.pom.DeleteOkPOM_RTTC_013;
+import com.training.pom.AdminLoginPOM;
+import com.training.pom.Retail_CategoriesPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -27,39 +25,33 @@ public class DeleteOkTests_RTTC_013 {
 
 	private WebDriver driver;
 	private String adminURL;
-	private DeleteOkPOM_RTTC_013 DeleteOkPOM;
+	private AdminLoginPOM LoginPOM;
+	private Retail_CategoriesPOM DeleteOkPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
 	@BeforeClass
-	public static void setUpBeforeClass() throws IOException {
+	public void setUpBeforeClass() throws IOException {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
-	}
-
-	@Test(priority = 1)
-	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		DeleteOkPOM = new DeleteOkPOM_RTTC_013(driver); 
+		LoginPOM = new AdminLoginPOM(driver);
+		DeleteOkPOM = new Retail_CategoriesPOM(driver);
 		adminURL = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
-		driver.get(adminURL);
-	}
-
-
-
-
-	@Test(priority = 2)
+		driver.get(adminURL);}
+	
+	@Test(priority = 1)
 	public void validLoginTest() {
-		DeleteOkPOM.sendUserName("admin");
-		DeleteOkPOM.sendPassword("admin@123");
-		DeleteOkPOM.clickLoginBtn(); 
+		LoginPOM.sendUserName("admin");
+		LoginPOM.sendPassword("admin@123");
+		LoginPOM.clickLoginBtn();  
 		screenShot.captureScreenShot("Dashboard page validation success TC013");
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 2)
 	public void CatalogTest() {
 		DeleteOkPOM.catalogButton();
 		screenShot.captureScreenShot("Catalog links are displayed");
@@ -68,34 +60,28 @@ public class DeleteOkTests_RTTC_013 {
 		String expected = "Categories";
 		String title = driver.getTitle();
 		assertEquals(expected,title);
-		
+
 
 	}
-	@Test(priority = 4)
+	@Test(priority = 3)
 	public void CatalogName() {
 		DeleteOkPOM.jewellerycheckboxclick();
-
-	}
-
-	@Test(priority = 5)
-	public void DeleteTest() {
-
 		DeleteOkPOM.clickDel();
 		driver.switchTo().alert().accept();
 		screenShot.captureScreenShot("Success You have modified categories");
 		String success = DeleteOkPOM.success_msg();
 		System.out.println("Success msg for the deletion of the Categories is : " + success);
 
-		 String expected ="Success";
-		 
-		 
-		 assertTrue(success.contains(expected));
-		 		 
+		String expected ="Success";
+
+
+		assertTrue(success.contains(expected));
+
 	}
 
 	@AfterClass
 	public void tearDown() throws Exception {
-		Thread.sleep(1000);
+
 		driver.quit();
 	}
 }

@@ -1,37 +1,64 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results skipped="0" failed="0" ignored="0" total="4" passed="4">
+<testng-results skipped="0" failed="1" ignored="0" total="2" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="37106" started-at="2019-05-29T05:30:53Z" finished-at="2019-05-29T05:31:31Z">
+  <suite name="Default suite" duration-ms="21543" started-at="2019-06-06T12:20:15Z" finished-at="2019-06-06T12:20:36Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="37106" started-at="2019-05-29T05:30:53Z" finished-at="2019-05-29T05:31:31Z">
-      <class name="com.training.sanity.tests.DeleteProductRTTC_015Tests">
-        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.DeleteProductRTTC_015Tests@e25b2fe]" name="setUpBeforeClass" is-config="true" duration-ms="22" started-at="2019-05-29T05:30:53Z" finished-at="2019-05-29T05:30:53Z">
+    <test name="Default test" duration-ms="21543" started-at="2019-06-06T12:20:15Z" finished-at="2019-06-06T12:20:36Z">
+      <class name="com.training.sanity.tests.CheckOrderDetailsRTTC_045Tests">
+        <test-method status="PASS" signature="setUpBeforeClass()[pri:0, instance:com.training.sanity.tests.CheckOrderDetailsRTTC_045Tests@204f30ec]" name="setUpBeforeClass" is-config="true" duration-ms="12829" started-at="2019-06-06T12:20:15Z" finished-at="2019-06-06T12:20:28Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUpBeforeClass -->
-        <test-method status="PASS" signature="setUp()[pri:1, instance:com.training.sanity.tests.DeleteProductRTTC_015Tests@e25b2fe]" name="setUp" duration-ms="29172" started-at="2019-05-29T05:30:53Z" finished-at="2019-05-29T05:31:23Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- setUp -->
-        <test-method status="PASS" signature="validLoginTest()[pri:2, instance:com.training.sanity.tests.DeleteProductRTTC_015Tests@e25b2fe]" name="validLoginTest" duration-ms="3521" started-at="2019-05-29T05:31:23Z" finished-at="2019-05-29T05:31:26Z">
+        <test-method status="PASS" signature="validLoginTest()[pri:1, instance:com.training.sanity.tests.CheckOrderDetailsRTTC_045Tests@204f30ec]" name="validLoginTest" duration-ms="4324" started-at="2019-06-06T12:20:28Z" finished-at="2019-06-06T12:20:32Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- validLoginTest -->
-        <test-method status="PASS" signature="CatalogTest()[pri:3, instance:com.training.sanity.tests.DeleteProductRTTC_015Tests@e25b2fe]" name="CatalogTest" duration-ms="2501" started-at="2019-05-29T05:31:26Z" finished-at="2019-05-29T05:31:29Z">
+        <test-method status="FAIL" signature="ReportsCheck()[pri:2, instance:com.training.sanity.tests.CheckOrderDetailsRTTC_045Tests@204f30ec]" name="ReportsCheck" duration-ms="4317" started-at="2019-06-06T12:20:32Z" finished-at="2019-06-06T12:20:36Z">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[expected [true] but found [false]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: expected [true] but found [false]
+at org.testng.Assert.fail(Assert.java:96)
+at org.testng.Assert.failNotEquals(Assert.java:776)
+at org.testng.Assert.assertTrue(Assert.java:44)
+at org.testng.Assert.assertTrue(Assert.java:54)
+at com.training.sanity.tests.CheckOrderDetailsRTTC_045Tests.ReportsCheck(CheckOrderDetailsRTTC_045Tests.java:61)
+at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+at java.lang.reflect.Method.invoke(Unknown Source)
+at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:124)
+at org.testng.internal.Invoker.invokeMethod(Invoker.java:583)
+at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:719)
+at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:989)
+at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:125)
+at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:109)
+at org.testng.TestRunner.privateRun(TestRunner.java:648)
+at org.testng.TestRunner.run(TestRunner.java:505)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:455)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:450)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:415)
+at org.testng.SuiteRunner.run(SuiteRunner.java:364)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:84)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1208)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1137)
+at org.testng.TestNG.runSuites(TestNG.java:1049)
+at org.testng.TestNG.run(TestNG.java:1017)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:251)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:77)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
-        </test-method> <!-- CatalogTest -->
-        <test-method status="PASS" signature="DeleteTest()[pri:4, instance:com.training.sanity.tests.DeleteProductRTTC_015Tests@e25b2fe]" name="DeleteTest" duration-ms="1669" started-at="2019-05-29T05:31:29Z" finished-at="2019-05-29T05:31:30Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- DeleteTest -->
-        <test-method status="PASS" signature="tearDown()[pri:0, instance:com.training.sanity.tests.DeleteProductRTTC_015Tests@e25b2fe]" name="tearDown" is-config="true" duration-ms="177" started-at="2019-05-29T05:31:30Z" finished-at="2019-05-29T05:31:31Z">
-          <reporter-output>
-          </reporter-output>
-        </test-method> <!-- tearDown -->
-      </class> <!-- com.training.sanity.tests.DeleteProductRTTC_015Tests -->
+        </test-method> <!-- ReportsCheck -->
+      </class> <!-- com.training.sanity.tests.CheckOrderDetailsRTTC_045Tests -->
     </test> <!-- Default test -->
   </suite> <!-- Default suite -->
 </testng-results>

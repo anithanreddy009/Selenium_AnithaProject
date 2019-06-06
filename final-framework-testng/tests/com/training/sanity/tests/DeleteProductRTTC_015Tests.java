@@ -15,8 +15,10 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
+import com.mysql.jdbc.log.Log;
 import com.training.generics.ScreenShot;
-import com.training.pom.DeleteProductRTTC_015POM;
+import com.training.pom.AdminLoginPOM;
+import com.training.pom.Retail_productsPOM;
 import com.training.utility.DriverFactory;
 import com.training.utility.DriverNames;
 
@@ -25,39 +27,34 @@ public class DeleteProductRTTC_015Tests {
 
 	private WebDriver driver;
 	private String adminURL;
-	private DeleteProductRTTC_015POM DeleteProductPOM;
+	private AdminLoginPOM LoginPOM;
+	private Retail_productsPOM DeleteProductPOM;
 	private static Properties properties;
 	private ScreenShot screenShot;
 
 	@BeforeClass
-	public static void setUpBeforeClass() throws IOException {
+	public void setUpBeforeClass() throws IOException {
 		properties = new Properties();
 		FileInputStream inStream = new FileInputStream("./resources/others.properties");
 		properties.load(inStream);
-	}
-
-	@Test(priority = 1)
-	public void setUp() throws Exception {
 		driver = DriverFactory.getDriver(DriverNames.CHROME);
-		DeleteProductPOM = new DeleteProductRTTC_015POM(driver); 
+		LoginPOM = new AdminLoginPOM(driver);
+		DeleteProductPOM = new Retail_productsPOM(driver); 
 		adminURL = properties.getProperty("adminURL");
 		screenShot = new ScreenShot(driver); 
 		// open the browser 
 		driver.get(adminURL);
 	}
 
-
-
-
-	@Test(priority = 2)
+	@Test(priority = 1)
 	public void validLoginTest() {
-		DeleteProductPOM.sendUserName("admin");
-		DeleteProductPOM.sendPassword("admin@123");
-		DeleteProductPOM.clickLoginBtn(); 
+		LoginPOM.sendUserName("admin");
+		LoginPOM.sendPassword("admin@123");
+		LoginPOM.clickLoginBtn(); 
 		screenShot.captureScreenShot("Dashboard page validation success TC015");
 	}
 
-	@Test(priority = 3)
+	@Test(priority = 2)
 	public void CatalogTest() {
 		DeleteProductPOM.catalogButton();
 		screenShot.captureScreenShot("Catalog links are displayed");
@@ -68,7 +65,7 @@ public class DeleteProductRTTC_015Tests {
 		assertEquals(expected,title);
 
 	}
-	@Test(priority = 4)
+	@Test(priority = 3)
 	public void DeleteTest() {
 
 		DeleteProductPOM.select();
