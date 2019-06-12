@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="parallel execution" parallel="tests">
+  <test name="Retail Login">
+    <classes>
+      <class name="com.training.sanity.tests.RetailLogin_RTTC_011Tests" />
+    </classes>
+  </test> <!-- Test -->
+  
+   <test name="Catalog selection">
+    <classes>
+      <class name="com.training.sanity.tests.Catalog_RTTC_012Tests" />
+    </classes>	
+  </test>
+  </suite> 

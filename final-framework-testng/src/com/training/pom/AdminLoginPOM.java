@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-public class RetailLoginPOM_RTTC_011 {
+public class AdminLoginPOM {
 	private WebDriver driver; 
 
-	public  RetailLoginPOM_RTTC_011(WebDriver driver) {
+	public  AdminLoginPOM(WebDriver driver) {
 		this.driver = driver; 
 		PageFactory.initElements(driver, this);
 	}
@@ -37,5 +37,6 @@ public class RetailLoginPOM_RTTC_011 {
 		this.loginBtn.click(); 
 	}
 }
+
 
 
