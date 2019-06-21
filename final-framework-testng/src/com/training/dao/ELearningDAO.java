@@ -13,50 +13,54 @@ import com.training.utility.LoadDBDetails;
 
 // Data Access Object 
 public class ELearningDAO {
-	
+
 	Properties properties; 
-	
+
 	public ELearningDAO() {
-		 try {
+		try {
 			properties = new Properties();
 			FileInputStream inStream = new FileInputStream("./resources/sql.properties");
 			properties.load(inStream);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	
+
 	public List<LoginBean> getLogins(){
 		String sql = properties.getProperty("get.logins"); 
-		
+
 		GetConnection gc  = new GetConnection(); 
 		List<LoginBean> list = null;
 		try {
 			gc.ps1 = GetConnection.getMySqlConnection(LoadDBDetails.getDBDetails()).prepareStatement(sql); 
 			list = new ArrayList<LoginBean>(); 
-			
+
 			gc.rs1 = gc.ps1.executeQuery(); 
-			
+
 			while(gc.rs1.next()) {
-			
+
 				LoginBean temp = new LoginBean(); 
 				temp.setUserName(gc.rs1.getString(1));
 				temp.setPassword(gc.rs1.getString(2));
-
-				list.add(temp); 
+				temp.setname(gc.rs1.getString(3));
+				temp.setmetatag(gc.rs1.getString(4));
+				temp.setproductmodel(gc.rs1.getString(5));
+				temp.setprice(gc.rs1.getString(6));
+				temp.setquantity(gc.rs1.getString(7));
 				
+				list.add(temp); 
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		return list; 
 	}
-	
+
 	public static void main(String[] args) {
 		new ELearningDAO().getLogins().forEach(System.out :: println);
 	}
-	
-	
+
+
 }

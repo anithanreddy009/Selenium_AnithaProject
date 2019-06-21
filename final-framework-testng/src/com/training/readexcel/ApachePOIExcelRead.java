@@ -19,9 +19,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  *      access.
  */
 public class ApachePOIExcelRead {
-	public  String [][] getExcelContent(String fileName) {
+	public  String [][] getExcelContent(String fileName, String sheetname) {
 		int rowCount =0; 
-		String [][] list1 = null; 
+		String [][] list = null; 
 		
 		try {
 			System.out.println("File Name Got " + fileName);
@@ -31,7 +31,7 @@ public class ApachePOIExcelRead {
 			XSSFWorkbook workbook = new XSSFWorkbook(file);
 
 			// Get first/desired sheet from the workbook
-			XSSFSheet sheet = workbook.getSheetAt(0);
+			XSSFSheet sheet = workbook.getSheet(sheetname);
 			
 			int rowTotal = sheet.getLastRowNum();
 
@@ -42,7 +42,7 @@ public class ApachePOIExcelRead {
 			
 			// Iterate through each rows one by one
 			Iterator<Row> rowIterator = sheet.iterator();
-			 list1 = new String[rowTotal][2];
+			 list= new String[rowTotal][2];
 			 
 			while (rowIterator.hasNext()) {
 				Row row = rowIterator.next();
@@ -70,12 +70,17 @@ public class ApachePOIExcelRead {
 						if(cell.getStringCellValue()!=null){
 							tempList1[cellCount] =cell.getStringCellValue();
 						}
+						
 						break;
+					case Cell.CELL_TYPE_BLANK:{
+					
+                        tempList1[cellCount] = (cell.getStringCellValue().toString());
+                        break;}
 					}
 					cellCount ++; 
 				}
 				if(tempList1 != null){
-					list1[rowCount++] = tempList1;
+					list[rowCount++] = tempList1;
 				}
 			}
 		
@@ -85,13 +90,17 @@ public class ApachePOIExcelRead {
 			e.printStackTrace();
 		}
 
-		return list1;
+		return list;
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:/Users/Naveen/Desktop/Testing.xlsx";
+		// excel file from where the data is retrieved
+
+		String fileName = "C:\\Anitha\\Products.xlsx";
 		
-		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName)){
+		
+		String sheetname="Sheet1";
+		for(String [] temp : new ApachePOIExcelRead().getExcelContent(fileName,sheetname)){
 			for(String  tt : temp){
 				System.out.println(tt);
 			}

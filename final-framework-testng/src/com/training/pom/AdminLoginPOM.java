@@ -33,6 +33,13 @@ public class AdminLoginPOM {
 		this.password.sendKeys(password); 
 	}
 
+	public String getUserName() {
+		return this.userName.getAttribute("value");
+	}
+
+	public String getPassword() {
+		return this.password.getAttribute("value");
+	}
 	public void clickLoginBtn() {
 		this.loginBtn.click(); 
 	}

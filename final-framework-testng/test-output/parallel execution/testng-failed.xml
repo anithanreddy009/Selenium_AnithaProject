@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [parallel execution]" parallel="tests">
+  <test thread-count="5" name="Catalog selection(failed)" parallel="tests">
+    <classes>
+      <class name="com.training.sanity.tests.Catalog_RTTC_012Tests">
+        <methods>
+          <include name="tearDown"/>
+          <include name="CatalogTest"/>
+          <include name="setUpBeforeClass"/>
+        </methods>
+      </class> <!-- com.training.sanity.tests.Catalog_RTTC_012Tests -->
+    </classes>
+  </test> <!-- Catalog selection(failed) -->
+</suite> <!-- Failed suite [parallel execution] -->

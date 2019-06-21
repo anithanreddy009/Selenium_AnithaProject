@@ -21,15 +21,37 @@ public class CheckOrderDetailsSalesPOM {
 	@FindBy(xpath ="//tr[2]//td[8]//a//i[@class='fa fa-eye']")
 	private WebElement view;
 
+	@FindBy(id="button-history")
+	private WebElement AddHistory;
+
+	@FindBy(xpath="//tr[1]//td[8]//a//i[@class='fa fa-eye']")
+	private WebElement PendingView;
+	
+	@FindBy(xpath="//*[@class='note-editable panel-body']")
+	private WebElement CommentOrder;
+	
 	@FindBy(xpath="//td//i[@class = 'fa fa-cog']")
 	private WebElement Generate;
-
+	
 	@FindBy(linkText ="Orders")
 	private WebElement viewOrders;
 
 	@FindBy(id ="invoice")
 	private WebElement invoice;
 
+	public void AddHistory() {
+		this.AddHistory.click();
+	}
+	
+	public void PendingView() {
+		this.PendingView.click();
+	}
+	
+	public void CommentOrder(String comment) {
+		this.CommentOrder.sendKeys(comment);
+	}
+	
+	
 	public void clickReports() {
 		Actions action = new Actions(driver);
 		action.moveToElement(sales).build().perform();
